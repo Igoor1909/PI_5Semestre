@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0a3544"
+    tools:context=".Activity.CadastroActivity">
+
+    <EditText
+        android:id="@+id/emailCadastroText2"
+        android:layout_width="386dp"
+        android:layout_height="54dp"
+        android:backgroundTint="#60a1bc"
+        android:hint="Nome de usuario"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textColorHighlight="@color/design_default_color_secondary_variant"
+        android:textColorHint="@color/white"
+        android:textColorLink="@color/design_default_color_secondary_variant"
+        app:layout_constraintBottom_toTopOf="@+id/emailCadastroText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.31" />
+
+    <EditText
+        android:id="@+id/emailCadastroText"
+        android:layout_width="386dp"
+        android:layout_height="54dp"
+        android:backgroundTint="#60a1bc"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textColorHighlight="@color/design_default_color_secondary_variant"
+        android:textColorHint="@color/white"
+        android:textColorLink="@color/design_default_color_secondary_variant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.489" />
+
+    <EditText
+        android:id="@+id/passwordCadastroText"
+        android:layout_width="386dp"
+        android:layout_height="54dp"
+        android:backgroundTint="#60a1bc"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailCadastroText"
+        app:layout_constraintVertical_bias="0.076" />
+
+    <Button
+        android:id="@+id/CadastrarButton"
+        android:layout_width="154dp"
+        android:layout_height="46dp"
+        android:backgroundTint="#60a1bc"
+        android:minHeight="48dp"
+        android:text="Cadastrar"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textColorHint="#050505"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordCadastroText"
+        app:layout_constraintVertical_bias="0.133" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="255dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

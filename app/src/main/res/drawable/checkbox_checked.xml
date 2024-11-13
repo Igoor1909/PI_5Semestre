@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@android:color/white" /> <!-- Cor do checkbox marcado -->
+    <corners android:radius="2dp" /> <!-- Opcional: para cantos arredondados -->
+</shape>

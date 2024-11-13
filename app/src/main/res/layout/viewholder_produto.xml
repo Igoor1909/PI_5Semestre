@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintAbsolut"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:background="#0a3544"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:text="title"
+    android:textAlignment="center"
+    android:textColor="#FFFFFF"
+    android:textSize="16sp">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="161dp"
+        android:layout_height="147dp"
+        app:srcCompat="@drawable/absolute_pequeno" />
+
+    <TextView
+        android:id="@+id/Tv_Absolut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vodka Absolut"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="R$ 119,90"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tv_Absolut" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
