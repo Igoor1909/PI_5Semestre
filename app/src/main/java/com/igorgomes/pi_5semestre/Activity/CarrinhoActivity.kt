@@ -1,79 +1,48 @@
 package com.igorgomes.pi_5semestre.Activity
 
-import ItemCarrinhoAdapter
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.igorgomes.pi_5semestre.R
-import com.igorgomes.pi_5semestre.Responses.ProdutoResponse
-
+import com.igorgomes.pi_5semestre.databinding.ActivityCarrinhoBinding
 
 class CarrinhoActivity : AppCompatActivity() {
 
-    private lateinit var recyclerViewCarrinho: RecyclerView
-    private lateinit var itemCarrinhoAdapter: ItemCarrinhoAdapter
-    private lateinit var btnHome: ImageView
-    private lateinit var btnCarrinho: ImageView
-    private val listaProdutosCarrinho = mutableListOf<ProdutoResponse>()
+    lateinit var CarrinhoBiding: ActivityCarrinhoBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContentView(R.layout.activity_carrinho)
-
-
-        // Inicializando o RecyclerView e o Adapter
-        recyclerViewCarrinho = findViewById(R.id.recyclerViewCarrinho)
-        itemCarrinhoAdapter = ItemCarrinhoAdapter(listaProdutosCarrinho)
-
-        recyclerViewCarrinho.apply {
-            layoutManager = LinearLayoutManager(this@CarrinhoActivity)
-            adapter = itemCarrinhoAdapter
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
         }
+        CarrinhoBiding = ActivityCarrinhoBinding.inflate(layoutInflater)
+        setContentView(CarrinhoBiding.root)
 
-        try {
-            // Receber os dados do Intent
-            val produtoId = intent.getIntExtra("produto_id", -1)
-            val produtoNome = intent.getStringExtra("produto_nome") ?: ""
-            val produtoPreco = intent.getDoubleExtra("produto_preco", 0.0)
-            val produtoQuantidade = intent.getIntExtra("produto_quantidade", 1)
 
-            // Verificar se o produto é válido e adicionar ao carrinho
-            if (produtoId != -1) {
-                val produto = ProdutoResponse(
-                    id = produtoId,
-                    nome = produtoNome,
-                    preco = produtoPreco,
-                    quantidade = produtoQuantidade
-                )
-                // Usar o método adicionarItem do adapter
-                itemCarrinhoAdapter.adicionarItem(produto)
-            }
-        } catch (e: Exception) {
-            e.printStackTrace() // Exibe o erro no log
-            Toast.makeText(this, "Erro ao adicionar o produto ao carrinho.", Toast.LENGTH_SHORT)
-                .show()
+        // codigos de mudanças de telas
+        CarrinhoBiding.imgHomeCartAct.setOnClickListener {
+            var intent = Intent(it.context, PrincipalActivity::class.java)
+            startActivity(intent)
         }
-
-        btnHome = findViewById(R.id.btn_home)
-        btnHome.setOnClickListener{
-            val telaInicial = Intent(this, PrincipalActivity::class.java)
-
-            startActivity(telaInicial)
+        CarrinhoBiding.imgCartCartAct.setOnClickListener {
+            var intent = Intent(it.context, CarrinhoActivity::class.java)
+            startActivity(intent)
         }
-
-        btnCarrinho = findViewById(R.id.btn_home)
-        btnCarrinho.setOnClickListener{
-            val telaCarrinho = Intent(this, CarrinhoActivity::class.java)
-            startActivity(telaCarrinho)
+        CarrinhoBiding.imgPerfilCartAct.setOnClickListener {
+            var intent = Intent(it.context, PerfilActivity::class.java)
+            startActivity(intent)
         }
-
-
+        CarrinhoBiding.imgSobreCartAct.setOnClickListener {
+            var intent = Intent(it.context, SobreActivity::class.java)
+            startActivity(intent)
+        }
     }
-
 }
-
-

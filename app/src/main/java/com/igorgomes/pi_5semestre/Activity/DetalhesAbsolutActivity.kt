@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.igorgomes.pi_5semestre.R
-import com.igorgomes.pi_5semestre.Responses.ProdutoResponse
 
 
 class DetalhesAbsolutActivity : AppCompatActivity() {

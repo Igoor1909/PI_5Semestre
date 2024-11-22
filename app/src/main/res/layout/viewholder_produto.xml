@@ -16,31 +16,41 @@
     android:textSize="16sp">
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/imgProduto"
         android:layout_width="161dp"
-        android:layout_height="147dp"
-        app:srcCompat="@drawable/absolute_pequeno" />
+        android:layout_height="147dp"/>
 
     <TextView
-        android:id="@+id/Tv_Absolut"
+        android:id="@+id/Tv_Nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vodka Absolut"
+        android:layout_marginTop="8dp"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        app:layout_constraintTop_toBottomOf="@+id/imgProduto" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tv_Preco"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="R$ 119,90"
+        android:layout_marginTop="8dp"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Tv_Absolut" />
+        app:layout_constraintTop_toBottomOf="@+id/Tv_Nome" />
+
+    <Button
+        android:id="@+id/btn_addProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Adicionar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Preco" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

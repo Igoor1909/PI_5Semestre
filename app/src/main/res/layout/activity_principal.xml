@@ -17,10 +17,10 @@
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,21 +28,22 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="415dp"
+                android:layout_height="65dp"
+                android:layout_weight="1"
                 android:background="@drawable/btn_fundo_botoes_selecionados"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginBottom="32dp"
-                    android:text="Bem vindo!"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Bem vindo"
                     android:textColor="#FFFFFF"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -50,41 +51,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/edtx_searchBar"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="32dp"
-                    android:background="@drawable/background_searchbar"
-                    android:drawableStart="@drawable/searchlup"
-                    android:drawablePadding="10dp"
-                    android:ems="10"
-                    android:hint="Buscar produto..."
-                    android:inputType="text"
-                    android:paddingStart="20dp"
-                    android:textSize="14sp"
-                    android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/RecyclerViewProduto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edtx_searchBar"
-                    app:spanCount="2"
-                    tools:itemCount="2"
-                    tools:listitem="@layout/viewholder_produto" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -120,7 +100,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView15"
+                        android:id="@+id/imgHomeHomeAct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
@@ -129,7 +109,7 @@
                         app:srcCompat="@drawable/home" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/tvHomeHomeAct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Home"
@@ -147,7 +127,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView15"
+                        android:id="@+id/imgCartHomeAct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
@@ -156,7 +136,7 @@
                         app:srcCompat="@drawable/cart" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/tvCartHomeAct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Carrinho"
@@ -174,7 +154,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView15"
+                        android:id="@+id/imgPerfilHomeAct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
@@ -183,7 +163,7 @@
                         app:srcCompat="@drawable/user" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/tvPerfilHomeAct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Perfil"
@@ -201,7 +181,7 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imageView15"
+                        android:id="@+id/imgSobreHomeAct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top"
@@ -210,7 +190,7 @@
                         app:srcCompat="@drawable/help" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/tvSobreHomeAct"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sobre nós"

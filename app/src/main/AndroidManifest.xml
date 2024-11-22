@@ -16,6 +16,12 @@
         android:theme="@style/Theme.PI_5Semestre"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.SobreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.PerfilActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.CarrinhoActivity"
             android:exported="false" />
         <activity
