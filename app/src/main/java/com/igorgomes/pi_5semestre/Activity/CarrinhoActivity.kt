@@ -2,47 +2,86 @@ package com.igorgomes.pi_5semestre.Activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.igorgomes.pi_5semestre.Adapter.ItemCartAdapter
+import com.igorgomes.pi_5semestre.Model.ItemCartModel
 import com.igorgomes.pi_5semestre.R
 import com.igorgomes.pi_5semestre.databinding.ActivityCarrinhoBinding
 
 class CarrinhoActivity : AppCompatActivity() {
 
-    lateinit var CarrinhoBiding: ActivityCarrinhoBinding
-
+    private lateinit var binding: ActivityCarrinhoBinding
+    private lateinit var itemCartAdapter: ItemCartAdapter
+    private val itemList: MutableList<ItemCartModel> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_carrinho)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-        CarrinhoBiding = ActivityCarrinhoBinding.inflate(layoutInflater)
-        setContentView(CarrinhoBiding.root)
+        binding = ActivityCarrinhoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        // Configurar RecyclerView com o callback para atualização do valor total
+        itemCartAdapter = ItemCartAdapter(
+            itemList,
+            onTotalValueItensChanged = { totalValue ->
+                updateTotalValue(totalValue) // Atualiza o TextView do valor total de itens
+            },
+            onTotalVendaItensChanged = { totalVenda ->
+                updateTotalVenda(totalVenda) // Atualiza o TextView do total de venda com adicional
+            }
+        )
+        binding.recyclerViewCarrinho.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewCarrinho.adapter = itemCartAdapter
 
-        // codigos de mudanças de telas
-        CarrinhoBiding.imgHomeCartAct.setOnClickListener {
-            var intent = Intent(it.context, PrincipalActivity::class.java)
-            startActivity(intent)
+        // Recuperar os dados do carrinho passados pela Intent
+        val carrinhoJson = intent.getStringExtra("carrinho")
+
+        if (!carrinhoJson.isNullOrEmpty()) {
+            val gson = Gson()
+            val type = object : TypeToken<List<ItemCartModel>>() {}.type
+            val items = gson.fromJson<List<ItemCartModel>>(carrinhoJson, type)
+            itemList.addAll(items)
+            itemCartAdapter.notifyDataSetChanged() // Atualiza o RecyclerView com os dados
+
+            // Atualiza o valor total inicial
+            updateTotalValue(calcularTotalInicial())
+            updateTotalVenda(calcularTotalVenda())
+        } else {
+            Toast.makeText(this, "Carrinho vazio!", Toast.LENGTH_SHORT).show()
         }
-        CarrinhoBiding.imgCartCartAct.setOnClickListener {
-            var intent = Intent(it.context, CarrinhoActivity::class.java)
-            startActivity(intent)
+
+        // Configurar botões de navegação
+        binding.imgHomeCartAct.setOnClickListener {
+            startActivity(Intent(this, PrincipalActivity::class.java))
         }
-        CarrinhoBiding.imgPerfilCartAct.setOnClickListener {
-            var intent = Intent(it.context, PerfilActivity::class.java)
-            startActivity(intent)
+        binding.imgCartCartAct.setOnClickListener {
+            startActivity(Intent(this, CarrinhoActivity::class.java))
         }
-        CarrinhoBiding.imgSobreCartAct.setOnClickListener {
-            var intent = Intent(it.context, SobreActivity::class.java)
-            startActivity(intent)
+        binding.imgPerfilCartAct.setOnClickListener {
+            startActivity(Intent(this, PerfilActivity::class.java))
         }
+        binding.imgSobreCartAct.setOnClickListener {
+            startActivity(Intent(this, SobreActivity::class.java))
+        }
+    }
+
+    // Atualiza o valor total no TextView correspondente
+    private fun updateTotalValue(totalValue: Double) {
+        binding.tvValorTotalItens.text = "${" %.2f".format(totalValue)}"
+    }
+    private fun updateTotalVenda(totalValue: Double){
+        binding.tvTotalVenda.text = "${" %.2f".format(totalValue)}"
+    }
+
+    // Calcula o valor total inicial dos itens no carrinho
+    private fun calcularTotalInicial(): Double {
+        return itemList.sumOf { it.preco * it.quantidade }
+    }
+
+    private fun calcularTotalVenda(): Double{
+        return itemList.sumOf { (it.preco * it.quantidade) + 10 }
     }
 }
